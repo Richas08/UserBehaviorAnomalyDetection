@@ -1,0 +1,27 @@
+# Virtual Environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Dataset files
+datasets/raw/
+
+# Model files
+models_saved/*.pkl
+
+# VS Code settings
+.vscode/
+
+# Output files
+output/
+
+venv/
+datasets/raw/
+__pycache__/
+*.pyc
+models_saved/
