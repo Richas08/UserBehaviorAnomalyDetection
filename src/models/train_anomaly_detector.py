@@ -72,6 +72,42 @@ print("\nSample of computed ML Anomaly Scores:")
 print(df[['user_id', 'ml_anomaly_score']].head())
 
 # --------------------------------------------------
+# STEP 5A: Generate Anomaly Labels
+# --------------------------------------------------
+
+predictions = model.predict(X_scaled)
+
+# 1 = Normal User
+# -1 = Anomalous User
+
+df["anomaly_label"] = predictions
+
+print("\nAnomaly Label Distribution:")
+print(df["anomaly_label"].value_counts())
+
+# --------------------------------------------------
+# STEP 5B: Display Top Suspicious Users
+# --------------------------------------------------
+
+print("\nTop 10 Most Suspicious Users:")
+
+top_anomalies = df.sort_values(
+    by="ml_anomaly_score",
+    ascending=False
+)
+
+print(
+    top_anomalies[
+        [
+            "user_id",
+            "ml_anomaly_score",
+            "anomaly_label"
+        ]
+    ].head(10)
+)
+
+
+# --------------------------------------------------
 # STEP 6: Serialize and Save Model & Scaler Artifacts
 # --------------------------------------------------
 # Create folder structure dynamically if it doesn't exist
